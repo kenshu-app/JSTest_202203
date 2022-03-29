@@ -25,7 +25,7 @@
                     sec++
                 }, 1000)
 
-                getLog('スタート')
+                getLog('開始')
             }
 
         })
@@ -34,12 +34,14 @@
                 clearInterval(interval)
                 interval = null
 
-                getLog('ストップ')
+                getLog('停止')
             }
         })
-        const getLog = ($message) => {
+        const getLog = (message) => {
             let list = document.createElement('li')
-            list.innerText = $message
+            const d  = new Date()
+            let time = d.getHours() + '時' + d.getMinutes() + '分' + d.getSeconds() + '秒に'
+            list.innerText = time + message
             log.appendChild(list)
         }
     </script>
