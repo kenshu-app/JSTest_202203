@@ -7,30 +7,41 @@
     <title>StopWatch</title>
 </head>
 <body>
-    <h1>StopWatch</h1>
+    <h1>StopWatch　<span id="app"></span></h1>
     <button id="startBtn">スタート</button>
     <button id="stopBtn">ストップ</button>
-    <h2 id="app"></h2>
+    <ul id="log"></ul>
     <script>
         const app = document.querySelector('#app')
+        const log = document.querySelector('#log')
         const startBtn = document.querySelector('#startBtn')
         const stopBtn  = document.querySelector('#stopBtn')
         let interval = null
         startBtn.addEventListener('click', () => {
             let sec = 1
-            if (interval == null) {
+            if (interval === null) {
                 interval = setInterval(() => {
                     app.innerText = sec
                     sec++
                 }, 1000)
+
+                getLog('スタート')
             }
+
         })
         stopBtn.addEventListener('click', () => {
-            if (interval != null) {
+            if (interval !== null) {
                 clearInterval(interval)
                 interval = null
+
+                getLog('ストップ')
             }
         })
+        const getLog = ($message) => {
+            let list = document.createElement('li')
+            list.innerText = $message
+            log.appendChild(list)
+        }
     </script>
 </body>
 </html>
