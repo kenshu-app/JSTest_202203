@@ -15,12 +15,21 @@
         const app = document.querySelector('#app')
         const startBtn = document.querySelector('#startBtn')
         const stopBtn  = document.querySelector('#stopBtn')
+        let interval = null
         startBtn.addEventListener('click', () => {
             let sec = 1
-            setInterval(() => {
-                app.innerText = sec
-                sec++
-            }, 1000)
+            if (interval == null) {
+                interval = setInterval(() => {
+                    app.innerText = sec
+                    sec++
+                }, 1000)
+            }
+        })
+        stopBtn.addEventListener('click', () => {
+            if (interval != null) {
+                clearInterval(interval)
+                interval = null
+            }
         })
     </script>
 </body>
