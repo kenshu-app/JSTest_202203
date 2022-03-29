@@ -10,13 +10,15 @@
     <h1>StopWatch</h1>
     <button id="startBtn">スタート</button>
     <button id="stopBtn">ストップ</button>
+    <h2 id="app"></h2>
     <script>
+        const app = document.querySelector('#app')
         const startBtn = document.querySelector('#startBtn')
         const stopBtn  = document.querySelector('#stopBtn')
         startBtn.addEventListener('click', () => {
             let sec = 1
             setInterval(() => {
-                console.log(sec)
+                app.innerText = sec
                 sec++
             }, 1000)
         })
